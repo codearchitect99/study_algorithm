@@ -1,27 +1,24 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-		int n = sc.nextInt();
+        int num = sc.nextInt();
 
-		float[] scores = new float[n];
+        int[] grades = new int[num];
 
-		float max = 0;
-		for (int i = 0; i < n; i++) {
-			scores[i] = sc.nextFloat();
-			if (max < scores[i]) {
-				max = scores[i];
-			}
-		}
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < num; i++) {
+            grades[i] = sc.nextInt();
+            max = max < grades[i] ? grades[i] : max;
+        }
 
-		float result = 0;
-		for (int i = 0; i < n; i++) {
-			scores[i] = scores[i]/max*100;
-			result += scores[i];
-		}
+        double result = 0;
+        for (int i = 0; i < num; i++) {
+            result += (double) grades[i] / max * 100.0;
+        }
 
-		System.out.println(result / n);
-	}
+        System.out.println(result/num);
+    }
 }
