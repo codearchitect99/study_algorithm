@@ -8,9 +8,9 @@ public class Main {
     private static StringBuilder sb = new StringBuilder();
     private static int n;
     private static int m;
-    private static boolean[] used;
     private static ArrayList<Integer>[] edges;
     private static int[] counts;
+    private static boolean[] used;
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] input = br.readLine().split(" ");
@@ -37,9 +37,9 @@ public class Main {
     }
 
     private static void sort(int idx) {
-        if (idx == 0) {
+        if (q.isEmpty()) {
             for (int i = 1; i <= n; i++) {
-                if (counts[i] <= 0) {
+                if (counts[i] == 0 && used[i] == false) {
                     q.offer(i);
                 }
             }
