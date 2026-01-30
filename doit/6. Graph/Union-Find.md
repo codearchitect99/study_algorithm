@@ -1,4 +1,4 @@
-## UnionFind
+## Union-Find
 
 Union 연산: 두 집합을 하나의 집합으로 하나로 합치는 연산
 
@@ -78,14 +78,11 @@ public class Main {
     
     // 두 집합 합치기
     public static void union(int a, int b) {
-        int aRoot = find(a);
-        int bRoot = find(b);
-
-        if (aRoot == bRoot) return; // 이미 같은 집합
-
-        // 대표 노드 번호가 작은 쪽을 대표로 사용
-        if (aRoot < bRoot) arr[bRoot] = aRoot;
-        else arr[aRoot] = bRoot;
+				a = find(a);
+        b = find(b);
+        if (a == b) return;    // 이미 같은 집합
+        if (a < b) arr[b] = a;    // 대표 노드 번호가 작은 쪽을 대표로 사용
+        else arr[a] = b;
     }
 }
 ```
