@@ -6,16 +6,19 @@ public class Main {
         int n = sc.nextInt();
         int k = sc.nextInt();
 
-        int p = factorial(n - k) * factorial(k);
-        int c = factorial(n);
-        System.out.println(c/p);
-    }
+        int[][] c = new int[n+1][n+1];
 
-    public static int factorial(int n) {
-        if (n == 0) return 1;
-        for (int i = n - 1; i >= 1; i--) {
-            n *= i;
+        for (int i = 1; i <= n; i++) {
+            c[i][i] = 1;
+            c[i][0] = 1;
         }
-        return n;
+        
+        for (int i = 2; i <= n; i++) {
+            for (int j = 1; j <= k; j++) {
+                c[i][j] = c[i-1][j-1] + c[i-1][j];
+            }
+        }
+        System.out.println(c[n][k]);
+
     }
 }
